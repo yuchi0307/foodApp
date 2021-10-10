@@ -41,7 +41,9 @@ const MealsAvailable = (props) => {
 
   return (
     <section className={classes.meals}>
-      <Card><ul>{mealList}</ul></Card>
+      <Card>
+          <ul>{mealList}</ul>
+          </Card>
     </section>
   );
 };
