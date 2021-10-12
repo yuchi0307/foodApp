@@ -6,4 +6,11 @@
  
  Meals <br>
  -MealsSummery/<br>
- -AvailableMeal/ MealItem/ MealItemForm/
+ -AvailableMeal/ MealItem/ MealItemForm/ <br>
+ 
+ Modal 複習ReactDOM.createPortal<br> 
+ -Backdrop /<br>
+ -< ModalOverlay >{props.children}< /ModalOverlay> <br>
+ 
+ -Modal 夾住 Cart <br> 
+ 
