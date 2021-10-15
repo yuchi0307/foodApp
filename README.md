@@ -47,4 +47,5 @@ console.log(reduceArr); // 15
 <br/>
 範例若未提供預設值，accumulator（累計值）就會取陣列的第一個元素也就是 1，而 currentValue 就會從陣列的第二個值開始 loop。<br/>
 <br>
+<a href="https://w3c.hexschool.com/blog/a2cb755f">JavaScript reduce 在做什麼？</a>
 
