@@ -49,3 +49,56 @@ console.log(reduceArr); // 15
 <br>
 <a href="https://w3c.hexschool.com/blog/a2cb755f">JavaScript reduce 在做什麼？</a>
 
+<h3>useReducer</h3><br>
+用來處理複雜的state, 和用來給多個子層資料的 useContext 一起運用。<br>
+
+```
+import { useReducer } from 'react';
+
+import CartContext from './cart-context'; //做好一個 React.createContext 組件在 return 時搭被 provider 使用
+
+const defaultCartState = {
+  items: [],
+  totalAmount: 0
+};
+
+const cartReducer = (state, action) => {
+  if (action.type === 'ADD') {
+    const updatedItems = state.items.concat(action.item);
+    const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount
+    };
+  }
+  return defaultCartState;
+};
+
+const CartProvider = (props) => {
+  const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
+
+  const addItemToCartHandler = (item) => {
+    dispatchCartAction({type: 'ADD', item: item});
+  };
+
+  const removeItemFromCartHandler = (id) => {
+    dispatchCartAction({type: 'REMOVE', id: id});
+  };
+
+  const cartContext = {
+    items: cartState.items,
+    totalAmount: cartState.totalAmount,
+    addItem: addItemToCartHandler,
+    removeItem: removeItemFromCartHandler,
+  };
+
+  return (
+    <CartContext.Provider value={cartContext}>
+      {props.children}
+    </CartContext.Provider>
+  );
+};
+
+export default CartProvider;
+```
+
