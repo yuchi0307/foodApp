@@ -22,7 +22,7 @@
  <h3>忘記的</h3>
  <ul>
  <li>js語法<a href="https://fred-zone.blogspot.com/2017/01/javascript-mapreduce.html">
-   array.reduce(()=>{}, initial)</a></li>
+   array.reduce(()=>{}, initial)</a></li>將一個陣列資料回傳為一個值
  </ul>
  
 ```
