@@ -102,3 +102,32 @@ const CartProvider = (props) => {
 export default CartProvider;
 ```
 
+<h3>將子層資料給父層: 用function</h3><br>
+例如: <br/>
+我在<MealItemForm / > 得到了使用者輸入的餐點數量,我要將數量、連同父層<MealTtem / >的餐點品項、id、敘述、價位等資料丟給購物車(兩個組件皆已用useContext)
+
+```
+//子層: 把數量存入變數enteredAmountNumber
+props.onAddToCart(enteredAmountNumber);
+
+//父層:
+const cartCtx = useContext(CartContext);
+const addToCartHandler = (amount) =>{
+  cartCtx.addItem({
+    id: props.id,
+    amount: amount //在這裡,子層若有添加數量,就會觸發addToCartHandler給onAddToCar,再傳遞相關資料給useContext,並重新render provider的內容
+    
+    //(以下略)這個context本身有 addItem 他是接收 item 為參數的 function
+  })
+}
+
+const 我是父層 = props =>{
+  return
+  (
+     <子層 onAddToCart={addToCartHandler}/ > 
+     //在這裡給他 attribute ,並傳送 function 給他
+  )
+}
+```
+
+
