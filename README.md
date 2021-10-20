@@ -129,5 +129,34 @@ const 我是父層 = props =>{
   )
 }
 ```
+簡言之可能是這樣:
+```
+//父:
+import Child from './Child';
+
+const Parent = props =>{
+  const callbackHandler = (childData) =>{
+    console.log(childData);
+  };
+
+  return(
+    <Child parentCallback={callbackHandler}/>
+    )
+};
+
+
+//子:
+const Child = props =>{
+  
+   const submitHandler = (event) => {
+    event.preventDefault();
+    props.parentCallback(childData);
+  };
+  return(
+     <form onSubmit={submitHandler} />
+    )
+}
+
+```
 
 
