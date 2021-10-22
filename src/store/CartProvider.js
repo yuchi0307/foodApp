@@ -22,8 +22,9 @@ const cartReducer = (state, action) => {
           amount: existingCartItem.amount + action.item.amount,
         };
         updatedItems = [...state.items]; //將原有、未整理數量的陣列攤開
+        //updatedItem 只是單獨將數量處理好的一個物件,他還沒有回到購物車陣列
         updatedItems[existingCartItemIndex] = updatedItem; 
-        //將整理好數量的 updatedItem 複寫回原本的位置，成為新的 updatedItems
+        //將整理好數量的 updatedItem 覆蓋回原本的位置，成為新的 updatedItems
       } else {
         updatedItems = state.items.concat(action.item);
       }
